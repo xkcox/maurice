@@ -7,201 +7,244 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #004a2d; /* Deep Bank Green */
-            --accent: #d4af37; /* Subtle Gold for "Premium" feel */
-            --text-main: #2d3436;
-            --text-light: #636e72;
-            --bg-light: #f9f9fb;
+            --primary: #004a2d; /* Professional Corporate Green */
+            --accent: #d4af37; 
+            --text-main: #1d1d1f;
+            --text-light: #4b4b4b;
+            --bg-light: #f5f5f7;
             --white: #ffffff;
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            color: var(--text-main); 
-            line-height: 1.7; 
-            margin: 0; 
-            background-color: var(--bg-light); 
-        }
+        body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.6; margin: 0; background-color: var(--bg-light); scroll-behavior: smooth; }
 
-        /* Hero Section */
-        header { 
-            background: linear-gradient(135deg, var(--primary) 0%, #002d1b 100%);
-            color: var(--white); 
-            padding: 80px 20px; 
-            text-align: center;
-        }
-        header h1 { font-size: 2.8rem; margin: 0; letter-spacing: -1px; }
-        header p { font-size: 1.2rem; opacity: 0.9; font-weight: 300; max-width: 700px; margin: 20px auto; }
+        /* Header & Nav */
+        header { background: linear-gradient(135deg, var(--primary) 0%, #002d1b 100%); color: var(--white); padding: 100px 20px; text-align: center; }
+        header h1 { font-size: 3rem; margin: 0; font-weight: 700; letter-spacing: -1px; }
+        header p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 20px auto; font-weight: 300; }
 
-        /* Navigation */
-        nav { 
-            background: var(--white); 
-            padding: 15px 0; 
-            text-align: center; 
-            position: sticky; 
-            top: 0; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-            z-index: 1000;
-        }
-        nav a { margin: 0 20px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+        nav { background: var(--white); padding: 20px 0; text-align: center; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        nav a { margin: 0 15px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
         nav a:hover { color: var(--primary); }
 
         .container { max-width: 1100px; margin: auto; padding: 60px 20px; }
+        h2.section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; font-weight: 700; }
+        h2.section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent); margin: 20px auto; }
 
-        /* Case Study Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; }
-        .card { 
-            background: var(--white); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
-            transition: all 0.3s ease;
-            border: 1px solid #eee;
-        }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 280px; object-fit: cover; }
+        /* Case Study Styling */
+        .case-study { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 60px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #eaeaea; }
+        .case-study h3 { color: var(--primary); font-size: 1.8rem; margin-top: 0; font-weight: 700; }
+        .jd-alignment { background: #eef2f1; color: var(--primary); padding: 8px 15px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; margin-bottom: 20px; display: inline-block; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        .card-body { padding: 30px; }
-        .card-body h3 { margin-top: 0; color: var(--primary); font-size: 1.5rem; }
-        .card-body p { color: var(--text-light); font-size: 0.95rem; }
+        .case-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; margin-top: 25px; align-items: start; }
+        .case-meta h4 { margin: 20px 0 5px 0; color: var(--primary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; font-weight: 700; }
+        .case-meta p { margin: 0 0 15px 0; color: var(--text-light); font-size: 0.95rem; }
         
-        /* Skills & Tags */
-        .tags { margin: 15px 0; }
-        .tag { 
-            display: inline-block; 
-            background: #eef2f1; 
-            color: var(--primary); 
-            padding: 4px 12px; 
-            border-radius: 50px; 
-            font-size: 0.75rem; 
-            font-weight: 700; 
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
+        .case-image img { width: 100%; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
 
-        .btn { 
-            display: inline-block; 
-            padding: 12px 25px; 
-            background: var(--primary); 
-            color: white; 
-            text-decoration: none; 
-            border-radius: 6px; 
-            font-size: 0.9rem; 
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-        .btn:hover { background: #00633d; }
+        /* Process Section */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 40px; }
+        .process-step { padding: 30px; background: var(--white); border-radius: 12px; border-bottom: 4px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .process-step h4 { color: var(--primary); margin-top: 0; font-size: 1.1rem; }
+        .process-step p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0; }
 
-        /* Section Headings */
-        h2.section-title { 
-            text-align: center; 
-            font-size: 2rem; 
-            margin-bottom: 50px; 
-            position: relative; 
-        }
-        h2.section-title::after { 
-            content: ''; 
-            display: block; 
-            width: 50px; 
-            height: 3px; 
-            background: var(--accent); 
-            margin: 15px auto; 
-        }
+        /* Skills Section */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .skill-category { background: var(--primary); color: white; padding: 35px; border-radius: 16px; transition: transform 0.3s ease; }
+        .skill-category:hover { transform: translateY(-5px); }
+        .skill-category h4 { margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; font-size: 1.2rem; }
+        .skill-category ul { list-style: none; padding: 0; margin: 0; }
+        .skill-category li { margin-bottom: 10px; font-size: 0.95rem; opacity: 0.9; display: flex; align-items: center; }
+        .skill-category li::before { content: '→'; margin-right: 10px; color: var(--accent); }
 
-        footer { background: #1a1c1d; color: #a1a1a1; text-align: center; padding: 40px 20px; font-size: 0.8rem; }
+        /* Contact/Closing */
+        .cta-section { text-align: center; background: var(--white); padding: 80px 20px; border-radius: 16px; margin-top: 40px; border: 1px solid #eaeaea; }
+        .cta-section h2 { color: var(--primary); font-size: 2.2rem; margin-top: 0; }
+        .btn-primary { display: inline-block; padding: 18px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.3s; }
+        .btn-primary:hover { background: #002d1b; transform: scale(1.05); }
         
-        @media (max-width: 600px) {
-            .grid { grid-template-columns: 1fr; }
-        }
+        .btn-link { display: inline-block; margin-top: 20px; color: var(--primary); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--primary); transition: 0.2s; }
+        .btn-link:hover { color: var(--accent); border-color: var(--accent); }
+
+        footer { background: #1a1c1d; color: #888; text-align: center; padding: 60px 20px; font-size: 0.85rem; }
+
+        @media (max-width: 900px) { .case-grid { grid-template-columns: 1fr; } .case-image { order: -1; } }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Instructional Design & Development</h1>
-    <p>Strategic learning solutions specializing in Level 4 Simulations, financial compliance, and WCAG 2.1 accessibility for global organizations.</p>
+    <h1>Instructional Design & Technology</h1>
+    <p>Architecture of complex Level 4 simulations, financial compliance training, and WCAG 2.1 accessible learning ecosystems for global operations.</p>
 </header>
 
 <nav aria-label="Main Navigation">
     <a href="#work">Case Studies</a>
     <a href="#process">My Process</a>
-    <a href="#skills">Technical Skills</a>
+    <a href="#skills">Technical Expertise</a>
+    <a href="#contact">Contact</a>
 </nav>
 
 <main class="container">
-    
+
     <section id="work">
-        <h2 class="section-title">Featured Case Studies</h2>
-        <div class="grid">
-            
-            <article class="card">
-                <img src="case-study-cibc.jpg" alt="CIBC Investors Edge Trading Simulation">
-                <div class="card-body">
-                    <h3>CIBC Trading Simulation</h3>
-                    <div class="tags">
-                        <span class="tag">LEVEL 4 SIMULATION</span>
-                        <span class="tag">STORYLINE 360</span>
-                        <span class="tag">FINANCIAL SECTOR</span>
-                    </div>
-                    <p><strong>Challenge:</strong> Reducing learner anxiety in high-stakes trading environments.<br>
-                    <strong>Solution:</strong> A variable-driven, non-linear simulation allowing users to practice market orders in a risk-free "sandbox" with real-time feedback loops.</p>
-                    <a href="https://www.investorsedge.cibc.com/en/learn/trading-with-investors-edge.html" class="btn" target="_blank">View Live Site</a>
-                </div>
-            </article>
+        <h2 class="section-title">Portfolio Case Studies</h2>
 
-            <article class="card">
-                <img src="case-study-accessibility.jpg" alt="Accessibility Training Interface">
-                <div class="card-body">
-                    <h3>AccessForward Compliance</h3>
-                    <div class="tags">
-                        <span class="tag">WCAG 2.1</span>
-                        <span class="tag">AODA</span>
-                        <span class="tag">SCREEN READER TESTED</span>
-                    </div>
-                    <p><strong>Challenge:</strong> Developing provincial-standard training that is 100% compliant with visual and motor accessibility laws.<br>
-                    <strong>Solution:</strong> Engineered a robust focus-order system and high-contrast UI, fully tested with JAWS and NVDA screen readers.</p>
-                    <a href="https://accessforward.ca/design-of-public-spaces-standard-training/" class="btn" target="_blank">Explore Accessibility</a>
+        <article class="case-study">
+            <div class="jd-alignment">Alignment: Level 4 Simulations | Banking | Business Acumen</div>
+            <h3>Case Study 1: The Complex Financial Simulation</h3>
+            <div class="case-grid">
+                <div class="case-meta">
+                    <h4>The Challenge</h4>
+                    <p>Users face high anxiety and risk when learning to trade. The goal was to create a "sandbox" environment where complex financial maneuvers could be practiced without real-world loss.</p>
+                    <h4>Instructional Approach</h4>
+                    <p>Utilized Scenario-Based Learning. I mapped out "Happy Path" and "Error Path" branches to mirror real-life decision-making and risk assessment.</p>
+                    <h4>Development Details</h4>
+                    <p>Built complex variables and triggers in Articulate Storyline 360 to track user input, calculate positions, and provide real-time financial feedback.</p>
+                    <h4>Impact</h4>
+                    <p>Reduced user "time-to-proficiency" and lowered support calls regarding platform navigation significantly.</p>
+                    <a href="https://www.investorsedge.cibc.com/en/learn/trading-with-investors-edge.html" class="btn-link" target="_blank">Explore Simulation &rarr;</a>
                 </div>
-            </article>
-
-            <article class="card">
-                <img src="case-study-rcm.jpg" alt="Royal Conservatory Teacher Portal">
-                <div class="card-body">
-                    <h3>RCM Pedagogy Portal</h3>
-                    <div class="tags">
-                        <span class="tag">ADOBE PREMIERE</span>
-                        <span class="tag">UX DESIGN</span>
-                        <span class="tag">MULTIMEDIA</span>
-                    </div>
-                    <p><strong>Challenge:</strong> Creating a digital-first repository for professional music educators.<br>
-                    <strong>Solution:</strong> A high-fidelity video ecosystem using custom HTML5 players and professional video post-production to ensure engagement.</p>
-                    <a href="https://teacherportal.rcmusic.com/Collections/Watch-Listen" class="btn" target="_blank">View Video Collection</a>
+                <div class="case-image">
+                    <img src="case-study-cibc.jpg" alt="CIBC Trading Simulation Preview">
                 </div>
-            </article>
+            </div>
+        </article>
 
-            <article class="card">
-                <img src="case-study-tpl.jpg" alt="TPL Kids Digital Literacy Quizzes">
-                <div class="card-body">
-                    <h3>TPL Gamified Literacy</h3>
-                    <div class="tags">
-                        <span class="tag">GAMIFICATION</span>
-                        <span class="tag">JAVASCRIPT</span>
-                        <span class="tag">INTERACTIVE WEB</span>
-                    </div>
-                    <p><strong>Challenge:</strong> Engaging youth in digital literacy through non-traditional assessment.<br>
-                    <strong>Solution:</strong> Interactive, responsive quiz modules built with custom JavaScript and vibrant, youth-centric UI design.</p>
-                    <a href="https://kids.tpl.ca/quizzes" class="btn" target="_blank">Play Quiz</a>
+        <article class="case-study">
+            <div class="jd-alignment">Alignment: WCAG 2.1 | AODA | JAWS & NVDA Testing</div>
+            <h3>Case Study 2: Inclusive Design & Compliance</h3>
+            <div class="case-grid">
+                <div class="case-meta">
+                    <h4>The Challenge</h4>
+                    <p>Creating mandatory provincial training that is 100% accessible to learners with visual, auditory, and motor impairments.</p>
+                    <h4>Instructional Approach</h4>
+                    <p>Followed Universal Design for Learning (UDL) principles. Focused on clear information hierarchy and multi-modal content delivery.</p>
+                    <h4>Development Details</h4>
+                    <p>Optimized for JAWS/NVDA screen readers. Engineered custom tab-order logic to ensure a seamless "keyboard-only" experience.</p>
+                    <h4>Impact</h4>
+                    <p>Delivered gold-standard compliance modules used by thousands of organizations across Ontario to meet AODA requirements.</p>
+                    <a href="https://accessforward.ca/design-of-public-spaces-standard-training/" class="btn-link" target="_blank">View Accessibility Project &rarr;</a>
                 </div>
-            </article>
+                <div class="case-image">
+                    <img src="case-study-accessibility.jpg" alt="Accessibility Training Interface Preview">
+                </div>
+            </div>
+        </article>
 
+        <article class="case-study">
+            <div class="jd-alignment">Alignment: Video Production | Adobe Creative Cloud | Brand Standards</div>
+            <h3>Case Study 3: Multimedia Learning Ecosystem</h3>
+            <div class="case-grid">
+                <div class="case-meta">
+                    <h4>The Challenge</h4>
+                    <p>High-level music educators required a high-fidelity digital repository to bridge the gap between theory and performance, maintaining the RCM’s 130-year prestige.</p>
+                    <h4>Instructional Approach</h4>
+                    <p>Applied Micro-learning and Performance Support strategies, chunking complex demonstrations into digestible, searchable segments.</p>
+                    <h4>Development Details</h4>
+                    <p>Managed full post-production in Adobe Premiere and After Effects. Developed a premium UI for "Watch-Listen" collections.</p>
+                    <h4>Impact</h4>
+                    <p>Streamlined professional development for thousands of educators and increased portal retention through superior visual assets.</p>
+                    <a href="https://teacherportal.rcmusic.com/Collections/Watch-Listen" class="btn-link" target="_blank">Watch Video Collections &rarr;</a>
+                </div>
+                <div class="case-image">
+                    <img src="case-study-rcm.jpg" alt="RCM Teacher Portal Preview">
+                </div>
+            </div>
+        </article>
+
+        <article class="case-study">
+            <div class="jd-alignment">Alignment: Gamification | JavaScript | Youth Learning UX</div>
+            <h3>Case Study 4: Interactive Gamification</h3>
+            <div class="case-grid">
+                <div class="case-meta">
+                    <h4>The Challenge</h4>
+                    <p>Engaging a younger demographic in digital literacy where traditional assessment methods resulted in low completion rates.</p>
+                    <h4>Instructional Approach</h4>
+                    <p>Utilized Gamified Assessment and Gagne’s Nine Events to reward curiosity with immediate visual feedback and achievement loops.</p>
+                    <h4>Development Details</h4>
+                    <p>Integrated custom JavaScript for responsive quiz logic and designed youth-centric UI illustrations and interactive states.</p>
+                    <h4>Impact</h4>
+                    <p>Increased engagement metrics and completion rates among the library's primary youth demographic.</p>
+                    <a href="https://kids.tpl.ca/quizzes" class="btn-link" target="_blank">Play Interactive Quiz &rarr;</a>
+                </div>
+                <div class="case-image">
+                    <img src="case-study-tpl.jpg" alt="TPL Kids Interactive Preview">
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section id="process">
+        <h2 class="section-title">Instructional Methodology</h2>
+        <div class="process-grid">
+            <div class="process-step">
+                <h4>01. Analysis</h4>
+                <p>Identifying performance gaps through SME consultation and data-driven needs analysis.</p>
+            </div>
+            <div class="process-step">
+                <h4>02. Design</h4>
+                <p>Developing blueprints, non-linear branching logic, and high-fidelity storyboards.</p>
+            </div>
+            <div class="process-step">
+                <h4>03. Development</h4>
+                <p>Authoring in Storyline 360 with a focus on WCAG 2.1 compliance and brand alignment.</p>
+            </div>
+            <div class="process-step">
+                <h4>04. Evaluation</h4>
+                <p>QA testing, LMS integration (SCORM/xAPI), and post-launch metric analysis.</p>
+            </div>
         </div>
+    </section>
+    
+
+[Image of the ADDIE model]
+
+
+    <section id="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Authoring & Dev</h4>
+                <ul>
+                    <li>Articulate Storyline 360 (Expert)</li>
+                    <li>Rise 360 / Camtasia</li>
+                    <li>HTML5 / CSS3 / JavaScript</li>
+                    <li>Level 4 Simulation Architecture</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Multimedia & Design</h4>
+                <ul>
+                    <li>Adobe Creative Cloud (PS, AI)</li>
+                    <li>Adobe Premiere & After Effects</li>
+                    <li>UI/UX for Learning</li>
+                    <li>Brand Standard Implementation</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Accessibility & Standards</h4>
+                <ul>
+                    <li>WCAG 2.1 / AODA Compliance</li>
+                    <li>JAWS & NVDA Screen Readers</li>
+                    <li>Inclusive Design (UDL)</li>
+                    <li>LMS Integration (SCORM/xAPI)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <h2>Ready to deliver business value?</h2>
+        <p>I am currently seeking a high-complexity Instructional Designer/Developer role to apply my 8+ years of experience in the financial and public sectors.</p>
+        <a href="mailto:your-email@example.com" class="btn-primary">Connect for an Interview</a>
+        <p style="margin-top: 20px; font-size: 0.9rem;">Available for March 2026 backfill opportunities.</p>
     </section>
 
 </main>
 
 <footer>
-    <p>&copy; 2026 | Senior Instructional Designer & Developer | Toronto, ON</p>
-    <p>Proven 8+ Years Experience in Financial & Public Sectors</p>
+    <p>&copy; 2026 Senior Instructional Designer & Developer | Toronto, ON</p>
+    <p>Portfolio designed with a focus on WCAG 2.1 Accessibility and User Experience.</p>
 </footer>
 
 </body>
